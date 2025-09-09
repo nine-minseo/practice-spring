@@ -28,10 +28,16 @@ public class BoardController {
         return "";
     }
 
-    @GetMapping("/board/list")
+    @GetMapping("/board/list")  //locathost:8080/board/list
     public String boardList(Model model) {
         model.addAttribute("list", boardService.boardList());
 
         return "boardlist";
+    }
+
+    @GetMapping("/board/view")  //locathost:8080/board/view?id=1
+    public String boardView(Model model, Integer id) {
+        model.addAttribute("board", boardService.boardView(id));
+        return "boardview";
     }
 }
